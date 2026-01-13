@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORK - SOMIBAEG Portfolio</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/gh/sun-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo"><img src="assets/logo.png" alt="SOMIBAEG"></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">INFO</a></li>
+                    <li><a href="gallery.html" class="active">WORK</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <span id="mode-text">Light</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container fade-in-section">
+        <section class="gallery-wrapper">
+            <div class="gallery-header">
+                <h1 class="page-title">WORK</h1>
+                <p class="gallery-intro">이미지를 클릭하면 슬라이드하며 감상하실 수 있습니다.</p>
+            </div>
+
+            <div id="filter-buttons" class="refined-filter-group">
+                <button class="filter-btn active" onclick="filterSelection('all', this)">ALL</button>
+                <button class="filter-btn" onclick="filterSelection('COVER', this)">COVER</button>
+                <button class="filter-btn" onclick="filterSelection('ETC', this)">ETC</button>
+            </div>
+
+            <div class="refined-gallery-container">
+                <div class="year-section">
+                    <h2 class="year-title">2025</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2025_01.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_01.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2025_02.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_02.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2025_03.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_03.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2025_04.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_04.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2025_05.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_05.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item ETC">
+                            <a href="assets/images/work_2025_06.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_06.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item ETC">
+                            <a href="assets/images/work_2025_07.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_07.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item ETC">
+                            <a href="assets/images/work_2025_08.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2025_08.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="year-section">
+                    <h2 class="year-title">2024</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_01.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_01.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_02.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_02.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_03.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_03.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_04.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_04.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_05.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_05.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_06.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_06.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_07.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_07.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_08.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_08.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_09.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_09.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_10.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_10.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="gallery-item COVER">
+                            <a href="assets/images/work_2024_11.jpg" class="glightbox" data-gallery="my-portfolio">
+                                <div class="img-container">
+                                    <img src="assets/images/work_2024_11.jpg" alt="2025 작품 1" loading="lazy">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+    <a href="contact.html" class="fixed-contact-btn" title="연락하기">
+        <i class="fa-solid fa-paper-plane"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

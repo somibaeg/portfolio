@@ -1,0 +1,907 @@
+/* 전체 폰트 적용 */
+body, input, textarea, button, select {
+    /* 1순위: SUIT, 2순위: 애플 고딕, 3순위: 시스템 기본 고딕 */
+    font-family: 'SUIT Variable', 'SUIT', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    -webkit-font-smoothing: antialiased; /* 글자를 더 매끄럽게 보이게 함 */
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    word-break: keep-all;
+}
+
+/* 제목 등 강조하고 싶은 부분의 두께 조절 */
+h1, h2, h3, .logo {
+    font-weight: 800; /* 굵게 */
+    letter-spacing: -0.02em; /* 자간을 살짝 좁혀서 더 세련되게 */
+}
+
+p, .description, label {
+    font-weight: 400; /* 보통 */
+    letter-spacing: -0.01em;
+}
+
+/* 1. 색상 및 변수 정의 */
+:root {
+    /* 로고 추출 색상 */
+    --accent-sky: #61E3F5;   /* 로고 좌측 상단 시안 블루 */
+    --accent-leaf: #B7E58C;  /* 로고 우측 하단 라임 그린 */
+    
+    /* 로고의 그라데이션을 담은 변수 */
+    --logo-gradient: linear-gradient(135deg, #61E3F5 0%, #B7E58C 100%);
+    
+    /* 배경 및 기본 톤 조절 (더 맑은 느낌을 위해 미세 조정) */
+    --bg-color: #f8fdfb;     
+    --text-color: #2c3e50;
+    --nav-bg: rgba(248, 253, 251, 0.85);
+    --card-bg: #ffffff;
+    --border-color: #e9f5ef;
+}
+
+[data-theme="dark"] {
+    --bg-color: #141618;
+    --text-color: #e0e6ed;
+    --nav-bg: rgba(20, 22, 24, 0.9);
+    --accent-sky: #4bc9d9;   /* 다크모드 가독성을 위해 살짝 차분하게 */
+    --accent-leaf: #98cc65;
+    --card-bg: #1e2124;
+    --border-color: #2c3136;
+}
+
+/* 2. 기본 레이아웃 */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 20px 40px;
+}
+
+/* 3. 헤더 및 네비게이션 */
+header {
+    position: fixed;
+    top: 0; width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+nav ul { display: flex; list-style: none; padding: 0; margin: 0; }
+nav ul li { margin: 0 15px; }
+nav ul li a { text-decoration: none; color: var(--text-color);}
+
+/* 4. 히로 섹션 (메인 이미지) */
+.hero { text-align: center; margin-bottom: 60px; }
+.hero-image-wrapper {
+    width: 100%;
+    height: 400px;
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.hero-image { width: 100%; height: 100%; object-fit: cover; }
+.description { margin-top: 20px; font-size: 1.1rem; color: var(--text-color); opacity: 0.8; }
+
+/* 5. 이력 섹션 */
+.section-title { font-size: 1.5rem; margin-bottom: 30px; border-bottom: 2px solid var(--accent-leaf); display: inline-block; }
+.exp-item { display: flex; margin-bottom: 15px; border-left: 3px solid var(--accent-sky); padding-left: 15px; }
+.year { font-weight: bold; margin-right: 20px; color: var(--accent-leaf); }
+
+/* 6. 다크모드 토글 스위치 CSS */
+.theme-switch-wrapper { display: flex; align-items: center; }
+.theme-switch { display: inline-block; height: 24px; position: relative; width: 44px; margin-right: 10px; }
+.theme-switch input { display: none; }
+.slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
+.slider:before { background-color: white; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
+input:checked + .slider { background-color: var(--accent-leaf); }
+input:checked + .slider:before { transform: translateX(20px); }
+#mode-text { font-size: 0.8rem; }
+
+/*컨택 버튼*/
+.fixed-contact-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-sky);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+}
+
+.fixed-contact-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: var(--accent-leaf);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 다크모드에서 버튼 아이콘 색상 조절 */
+[data-theme="dark"] .fixed-contact-btn {
+    color: #1a1c1e;
+}
+
+/* 컨택트 페이지 레이아웃 다듬기 */
+.contact-wrapper {
+    margin: 0 auto;
+}
+
+.contact-header {
+    margin-bottom: 60px;
+}
+
+.contact-header p {
+    color: var(--text-color);
+    opacity: 0.7;
+    line-height: 1.8;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+}
+
+.contact-info h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-leaf);
+    margin-bottom: 10px;
+}
+
+.contact-info p, .contact-info a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 30px;
+}
+
+/* 폼 스타일 정밀 수정 */
+/* --- 폼 스타일 수정 및 반응형 최적화 --- */
+
+.refined-form {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 폼 내부 행 설정: 성함/이메일 간격 확보 */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px; /* 칸 사이의 간격을 명확하게 확보 (이미지 문제 해결) */
+    margin-bottom: 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.6;
+    color: var(--text-color);
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 14px 18px; /* 내부 여백을 늘려 더 쾌적하게 */
+    border-radius: 12px;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* 패딩이 너비를 넘지 않도록 고정 */
+    resize: none;
+}
+
+/* 포커스 시 테두리 강조 */
+.input-group input:focus, 
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-sky);
+    box-shadow: 0 0 0 4px rgba(171, 219, 227, 0.15);
+}
+
+/* 전송 버튼 */
+.refined-submit-btn {
+    width: 100%;
+    background: var(--accent-sky);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.refined-submit-btn:hover {
+    background: var(--accent-leaf);
+    transform: translateY(-2px);
+}
+
+/* --- 모바일 반응형 최적화 (가장 중요) --- */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr; /* 인포와 폼이 세로로 배치됨 */
+        gap: 40px;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr; /* 성함과 이메일이 세로로 배치됨 */
+        gap: 20px;
+    }
+
+    .refined-form {
+        padding: 25px; /* 모바일에서는 여백을 줄여 공간 확보 */
+    }
+
+    .contact-header {
+        margin-bottom: 40px;
+    }
+
+    .contact-header p {
+        font-size: 0.95rem; /* 모바일 텍스트 가독성 조절 */
+    }
+}
+
+/* 슬라이더 전체 크기 및 여백 */
+.mySwiper {
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 꽉 차게 */
+}
+
+/* 화살표 버튼 커스텀 */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--accent-sky) !important; /* 우리가 정한 하늘색 */
+    background: rgba(255, 255, 255, 0.5); /* 반투명 배경 */
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* 화살표 크기 조절 */
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: var(--accent-leaf);
+    color: white !important;
+}
+
+/* 하단 페이지네이션(점) 색상 */
+.swiper-pagination-bullet-active {
+    background: var(--accent-sky) !important;
+}
+
+/* 다크모드에서 버튼 배경 조절 */
+[data-theme="dark"] .swiper-button-next,
+[data-theme="dark"] .swiper-button-prev {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* --- 애니메이션 관련 스타일 수정 --- */
+/* 1. 애니메이션 정의 하나로 통합 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. 초기 상태 숨김 설정 */
+.hero, .gallery-grid, .contact-wrapper, .experience {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 3. 부모(main)에 fade-in-section이 붙었을 때 자식들이 나타나게 설정 */
+.fade-in-section .hero,
+.fade-in-section .gallery-grid,
+.fade-in-section .contact-wrapper,
+.fade-in-section .experience {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+
+/* 인덱스 */
+/* 상단 로고 영역 */
+.top-artwork {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.center-logo {
+    max-width: 150px; /* 로고 크기 조절 */
+    height: auto;
+}
+
+/* 프로필 그리드 레이아웃 */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* 왼쪽 프로필 영역을 좁게 설정 */
+    gap: 40px;
+    align-items: start;
+}
+
+/* 왼쪽 프로필 디자인 */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--border-color); /* 이미지가 없을 때의 기본 배경 */
+}
+
+.name {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.name .job {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.6;
+}
+
+.email {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+/* 오른쪽 워크 리스트 디자인 (이미지 느낌 재현) */
+.work-details {
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.work-category {
+    margin-bottom: 25px;
+}
+
+.work-category h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* 역삼각형 마커 포인트 (나뭇잎색 적용) */
+.marker {
+    color: var(--accent-leaf);
+    font-size: 0.7rem;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.work-details ul {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.work-details li {
+    margin-bottom: 4px;
+    opacity: 0.8;
+}
+
+/* 반응형: 모바일에서는 한 줄로 */
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-info {
+        align-items: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+/* 1. 페이드인 대상들의 초기 상태 */
+.top-artwork,
+.profile-info,
+.work-category {
+    opacity: 0;
+}
+
+/* 2. 부모(.fade-in-section)가 활성화될 때 순차적으로 나타나게 설정 */
+.fade-in-section .top-artwork {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-section .profile-info {
+    animation: fadeIn 0.8s ease-out 0.2s forwards; /* 0.2초 뒤 등장 */
+}
+
+.fade-in-section .work-category {
+    animation: fadeIn 0.8s ease-out 0.4s forwards; /* 0.4초 뒤 등장 */
+}
+
+/* 아이콘 색상을 나뭇잎색으로 변경 */
+.email i {
+    color: var(--accent-leaf);
+    margin-right: 8px;
+}
+
+/* 고정 버튼 안의 아이콘 크기 조절 */
+.fixed-contact-btn i {
+    font-size: 1.5rem;
+}
+
+/* SNS 아이콘에 마우스를 올렸을 때 효과 */
+/* --- SNS 원형 아이콘 디자인 (style.css) --- */
+
+.social-icons {
+    display: flex;
+    gap: 15px; /* 아이콘 간격 */
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* 완벽한 원형 */
+    background: var(--card-bg); /* 기본 배경색 */
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 부드러운 그림자 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 아이콘 내부 스타일 */
+.social-icons a i {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    z-index: 2; /* 배경 위에 아이콘이 보이도록 */
+}
+
+/* 마우스 호버 및 클릭 효과 */
+.social-icons a:hover {
+    transform: translateY(-3px); /* 살짝 떠오름 */
+    box-shadow: 0 8px 20px rgba(97, 227, 245, 0.2); /* 시안색 빛 번짐 */
+    border-color: transparent;
+}
+
+.social-icons a:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(97, 227, 245, 0.1);
+}
+
+/* 호버 시 배경에 로고 그라데이션 채우기 */
+.social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--logo-gradient); /* 작가님 시그니처 그라데이션 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.social-icons a:hover::before {
+    opacity: 1; /* 마우스 올리면 그라데이션 배경 나타남 */
+}
+
+.social-icons a:hover i {
+    color: #ffffff; /* 배경이 어두워지므로 아이콘은 흰색으로 */
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .social-icons a {
+    background: #2c2f33; /* 다크모드 전용 배경색 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Gallery Grid Refined --- */
+
+/* 썸네일 컨테이너 스타일 */
+.img-container {
+    position: relative; /* 오버레이 배치를 위해 필요 */
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    cursor: pointer;
+}
+
+/* 마우스 호버 시 이미지 확대 효과 */
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.img-container:hover img {
+    transform: scale(1.1);
+}
+
+/* 호버 시 나타나는 맑은 반투명 오버레이 */
+.hover-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(171, 219, 227, 0.4); /* 하늘색 반투명 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.img-container:hover .hover-overlay {
+    opacity: 1;
+}
+
+.hover-overlay i {
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 갤러리 그리드 간격 조정 */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* 필터링 시 부드러운 전환을 위한 클래스 */
+.gallery-item {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.gallery-item.show {
+    display: block;
+}
+
+/* 갤러리 아이템 초기 상태 */
+.gallery-item {
+    display: none; /* 일단 모두 숨김 */
+}
+
+/* show 클래스가 붙은 아이템만 보이게 함 */
+.gallery-item.show {
+    display: block !important;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* 연도별 섹션 간격 */
+.year-section {
+    margin-bottom: 60px;
+}
+
+.year-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 연도 타이틀 디자인 */
+.year-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* 갤러리 그리드 간격 유지 */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+}
+
+/* --- 정제된 갤러리 필터 버튼 그룹 --- */
+.refined-filter-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* 버튼 사이 간격 */
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+.filter-btn {
+    /* Contact 폼의 입력창 스타일과 통일 */
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 12px 28px;
+    border-radius: 30px; /* 캡슐 형태 */
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* 아주 연한 그림자 */
+    outline: none;
+}
+
+/* 마우스 호버 시: Contact 제출 버튼과 동일한 반응 */
+.filter-btn:hover {
+    border-color: var(--accent-sky);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* 활성화 상태 (Active): 페이지의 주인공 색상(나뭇잎색) 적용 */
+.filter-btn.active {
+    background-color: var(--accent-leaf);
+    border-color: var(--accent-leaf);
+    color: #333; /* 맑은 배경 위 가독성 */
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(168, 230, 207, 0.3); /* 나뭇잎색 그림자 포인트 */
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .filter-btn {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .filter-btn.active {
+    color: #1a1c1e;
+}
+
+/* --- INFO 페이지 히로 슬라이더 스타일 --- */
+.info-hero-slider {
+    margin-bottom: 60px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.infoSwiper {
+    width: 100%;
+    height: 450px; /* 슬라이더 높이 조절 */
+    border-radius: 24px; /* 예시 이미지처럼 둥근 모서리 */
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.infoSwiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 꽉 차게 배치 */
+}
+
+/* 슬라이더 화살표 스타일 다듬기 */
+.infoSwiper .swiper-button-next,
+.infoSwiper .swiper-button-prev {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.infoSwiper .swiper-button-next:after,
+.infoSwiper .swiper-button-prev:after {
+    font-size: 1rem; /* 화살표 크기 */
+    font-weight: bold;
+}
+
+.infoSwiper .swiper-button-next:hover,
+.infoSwiper .swiper-button-prev:hover {
+    background: var(--accent-leaf);
+    transform: scale(1.1);
+}
+
+/* 하단 페이지네이션 점 스타일 */
+.infoSwiper .swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.5;
+}
+
+.infoSwiper .swiper-pagination-bullet-active {
+    background: var(--accent-leaf) !important;
+    opacity: 1;
+    width: 20px;
+    border-radius: 5px;
+}
+
+/* style.css에 추가 */
+.img-container img {
+    /* 이미지가 로드되기 전 배경색 설정 (맑은 색상 테마 유지) */
+    background-color: var(--border-color);
+    
+    /* 로드 시 부드러운 전환 효과 */
+    transition: opacity 0.5s ease-in-out, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+}
+
+/* 이미지가 로드되었을 때 (브라우저 기본 동작 지원용) */
+.img-container img[src] {
+    opacity: 1;
+}
+
+/* 레이블 내 아이콘 스타일 */
+.input-group label i {
+    margin-right: 6px; /* 아이콘과 텍스트 사이 간격 */
+    color: var(--accent-leaf); /* 아이콘 포인트 컬러 */
+    font-size: 0.8rem; /* 텍스트보다 살짝 작게 조절 */
+    vertical-align: middle;
+}
+
+/* 기존 요청사항: 텍스트 에리어 리사이즈 방지 */
+.input-group textarea {
+    resize: none;
+}
+
+/* 1. 네비게이션 활성화 바 (그라데이션 적용) */
+nav ul li a.active {
+    position: relative;
+    border-bottom: none; /* 기존 선 제거 */
+    font-weight: 800; 
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--logo-gradient); /* 로고와 동일한 그라데이션 */
+    border-radius: 2px;
+}
+
+/* 2. 필터 및 전송 버튼 (활성화 시 그라데이션) */
+.filter-btn.active, .refined-submit-btn {
+    background: var(--logo-gradient) !important;
+    border: none !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(97, 227, 245, 0.3);
+}
+
+.refined-submit-btn:hover {
+    filter: brightness(1.05); /* 마우스 올렸을 때 살짝 밝게 */
+    transform: translateY(-2px);
+}
+
+/* 3. 인포 페이지 마커 (로고 색상 반영) */
+.marker {
+    color: var(--accent-leaf);
+}
+
+
+/* --- 차분하고 세련된 커스텀 스크롤바 --- */
+
+/* 1. 전체 너비: 더 얇게 조절하여 시각적 방해를 줄임 */
+::-webkit-scrollbar {
+    width: 6px; 
+}
+
+/* 2. 스크롤바 트랙: 배경과 일치시켜 투명하게 처리 */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* 3. 스크롤바 핸들: 점잖은 미디엄 그레이 톤 */
+::-webkit-scrollbar-thumb {
+    /* 튀지 않는 차분한 회색 계열 */
+    background-color: #d1d5d8; 
+    border-radius: 10px;
+    
+    /* 배경색과 여백을 주어 아주 얇고 깔끔하게 보이게 함 */
+    border: 1px solid var(--bg-color);
+}
+
+/* 4. 마우스 호버 시: 작가님의 시안 블루 색상을 아주 연하게 노출 */
+::-webkit-scrollbar-thumb:hover {
+    /* 로고 색상을 활용하되, 투명도를 주어 튀지 않게 함 */
+    background-color: rgba(97, 227, 245, 0.6); 
+    transition: background-color 0.3s ease;
+}
+
+/* Firefox 대응 */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5d8 transparent;
+}
+
+.gallery-header p {
+    color: var(--text-color);
+    opacity: 0.7;
+    line-height: 1.8;
+}
+
+/* --- GLightbox 슬라이드 캡션 디자인 --- */
+
+/* 1. 제목 스타일 (영문 전용 폰트 적용) */
+.gslide-title {
+    font-family: 'Montserrat', sans-serif; /* 이전에 설정한 영문 폰트 */
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px !important;
+    font-size: 1.2rem !important;
+}
+
+/* 2. 설명 스타일 (한글 전용 폰트 적용) */
+.gslide-desc {
+    font-family: 'SUIT Variable', sans-serif;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-color);
+    opacity: 0.8; /* 약간 투명하게 하여 제목과 대비 */
+}
+
+/* 3. 전체 캡션 바 디자인 (점잖은 느낌) */
+.gslide-description {
+    background: var(--card-bg) !important; /* 카드 배경색과 통일 */
+    border-top: 1px solid var(--border-color);
+    padding: 20px !important;
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .gslide-description {
+    background: var(--card-bg) !important;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SOMIBAEG Portfolio</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/gh/sun-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo"><img src="assets/logo.png" alt="SOMIBAEG"></div>
+            <nav>
+                <ul><li><a href="index.html">INFO</a></li>
+                    <li><a href="gallery.html">WORK</a></li>
+                    <li><a href="contact.html" class="active">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <span id="mode-text">Light</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container fade-in-section">
+        <section class="contact-wrapper">
+            <div class="contact-header">
+                <h1 class="page-title">CONTACT</h1>
+                <p>작업 의뢰나 궁금한 점이 있으시다면 언제든 말씀해 주세요.<br>확인 후 3일 이내에 회신드리도록 하겠습니다.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Email</h3>
+                        <p>somibaeg90@gmail.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>SNS</h3>
+                        <div class="social-icons">
+                            <a href="https://x.com/somibaeg_shamrr"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="https://formspree.io/f/mqeekwyo" method="POST" class="refined-form">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-user"></i> Name</label>
+                            <input type="text" name="name" placeholder="성함" required>
+                        </div>
+                        <div class="input-group">
+                            <label><i class="fa-solid fa-at"></i> Email</label>
+                            <input type="email" name="_replyto" placeholder="이메일 주소" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-pen-nib"></i> Message</label>
+                        <textarea name="message" rows="5" placeholder="전하고 싶은 메시지를 적어주세요" required></textarea>
+                    </div>
+                    <button type="submit" class="refined-submit-btn">보내기</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
