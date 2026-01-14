@@ -420,6 +420,14 @@ input:checked + .slider:before { transform: translateX(20px); }
     margin-bottom: 25px;
 }
 
+.work-category h2 {
+    margin-bottom: 0 !important;
+}
+.work-category h2 + p {
+    margin-top: 0 !important;
+    margin-bottom: 0.5em;
+}
+
 .work-category h3 {
     font-size: 0.95rem;
     margin-bottom: 8px;
