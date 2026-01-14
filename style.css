@@ -905,3 +905,44 @@ nav ul li a.active::after {
 [data-theme="dark"] .gslide-description {
     background: var(--card-bg) !important;
 }
+
+html {
+    /* 스크롤바가 사라져도 화면이 밀리지 않도록 공간을 유지합니다 */
+    scrollbar-gutter: stable;
+}
+
+/* 슬라이드가 열릴 때(body에 관련 클래스가 붙을 때) 우측 여백 보정 */
+.gscrollbar-fixer {
+    padding-right: 0 !important;
+}
+
+/* 혹은 스크롤바가 사라져도 본문 폭을 100%로 고정 */
+body.glight-open {
+    width: 100% !important;
+    overflow-y: hidden !important;
+}
+
+/* 1. 슬라이더(GLightbox) 내부의 모든 스크롤바 숨기기 */
+.gcontainer::-webkit-scrollbar,
+.gslide-description::-webkit-scrollbar,
+.goverlay::-webkit-scrollbar {
+    display: none !important; /* 크롬, 사파리, 엣지 */
+}
+
+.gcontainer, .gslide-description, .goverlay {
+    -ms-overflow-style: none; /* IE, 에지 */
+    scrollbar-width: none; /* 파이어폭스 */
+}
+
+/* 2. 슬라이더가 열렸을 때 본문 밀림 방지 (가장 중요) */
+html.glight-open, body.glight-open {
+    /* 스크롤바가 사라져도 그 공간을 유지하여 본문 밀림을 막음 */
+    scrollbar-gutter: stable !important;
+    overflow: hidden !important;
+}
+
+/* 3. GLightbox 자체에서 넣는 여백 보정 제거 */
+.gscrollbar-fixer {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
