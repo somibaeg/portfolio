@@ -430,8 +430,6 @@ input:checked + .slider:before { transform: translateX(20px); }
 /* 역삼각형 마커 포인트 (나뭇잎색 적용) */
 .marker {
     color: var(--accent-leaf);
-    font-size: 0.7rem;
-    vertical-align: middle;
     margin-right: 5px;
 }
 
