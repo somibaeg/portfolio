@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             selector: '.glightbox',
             touchNavigation: true,
             loop: true,
-            zoomable: true
+            zoomable: true,
+            preload: true
         });
         // 전역에서 접근 가능하도록 설정 (필터링 시 필요)
         window.lightbox = lightbox;
