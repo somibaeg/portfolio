@@ -417,7 +417,7 @@ input:checked + .slider:before { transform: translateX(20px); }
 }
 
 .work-category {
-    margin-bottom: 25px;
+    margin-bottom: 4em;
 }
 
 .work-category h2 {
